@@ -11,6 +11,9 @@ let package = Package(
   ],
   targets: [
     .target(name: "PathKit", dependencies: [], path: "Sources"),
-    .testTarget(name: "PathKitTests", dependencies: ["PathKit", "Spectre"], path:"Tests/PathKitTests")
+    .testTarget(
+      name: "PathKitTests",
+      dependencies: ["PathKit", .product(name: "Spectre", package: "Spectre")],
+      path:"Tests/PathKitTests")
   ]
 )
