@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -7,13 +7,21 @@ let package = Package(
     .library(name: "PathKit", targets: ["PathKit"]),
   ],
   dependencies: [
-    .package(url:"https://github.com/kylef/Spectre.git", .upToNextMinor(from:"0.10.0"))
+    .package(url: "https://github.com/kylef/Spectre.git", .upToNextMinor(from:"0.10.0")),
   ],
   targets: [
-    .target(name: "PathKit", dependencies: [], path: "Sources"),
+    .target(
+      name: "PathKit",
+      dependencies: [],
+      path: "Sources"
+    ),
     .testTarget(
       name: "PathKitTests",
-      dependencies: ["PathKit", .product(name: "Spectre", package: "Spectre")],
-      path:"Tests/PathKitTests")
+      dependencies: [
+        "PathKit",
+        .product(name: "Spectre", package: "Spectre"),
+      ],
+      path: "Tests/PathKitTests"
+    )
   ]
 )
